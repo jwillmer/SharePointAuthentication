@@ -1,4 +1,4 @@
 SharePointAuthentication
 ========================
 
-SharePoint Online with ADFS Authentication
+SharePoint Online with ADFS Authentication Skeleton

@@ -1,0 +1,23 @@
+﻿<Application x:Class="SharePointAuthenticationSkeleton.App" 
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewModel="using:SharePointAuthenticationSkeleton.ViewModel"
+             xmlns:Converter="using:SharePointAuthenticationSkeleton.Converter"
+             mc:Ignorable="d">
+    <Application.Resources>
+        <ResourceDictionary>
+
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Common/StandardStyles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+            <viewModel:ViewModelLocator x:Key="Locator" d:IsDataSource="True" />
+
+            <Converter:BooleanNegationConverter x:Key="BooleanNegationConverter"/>
+            <Converter:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

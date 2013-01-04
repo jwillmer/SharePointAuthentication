@@ -1,0 +1,63 @@
+﻿<Page
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    x:Class="SharePointAuthenticationSkeleton.View.LoginView"
+    DataContext="{Binding LoginViewModel, Source={StaticResource Locator}}"
+    mc:Ignorable="d">
+
+    <Grid>
+        <Border x:Name="OuterBorder" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0" BorderThickness="2" CornerRadius="10" BorderBrush="#FF5C5C5C" Width="600" Height="360" Background="#FF99B8B2">
+            <Grid x:Name="Content">
+        		<TextBlock x:Name="TitleLabel" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Anmeldung" VerticalAlignment="Top" FontSize="26.667" FontFamily="Segoe UI Light" Foreground="Black" Margin="25,20,0,0"/>
+
+        		<Grid Background="#FFE8AD11" VerticalAlignment="Top" Margin="0,60,0,0">
+
+            		<Rectangle HorizontalAlignment="Left" Height="10" VerticalAlignment="Bottom" Width="400" Margin="30,0,0,0">
+            			<Rectangle.Fill>
+            				<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+            					<LinearGradientBrush.RelativeTransform>
+            						<CompositeTransform CenterY="0.5" CenterX="0.5" Rotation="90"/>
+            					</LinearGradientBrush.RelativeTransform>
+            					<GradientStop/>
+            					<GradientStop Color="#FFFF9700" Offset="0.58"/>
+            					<GradientStop Color="Transparent" Offset="1"/>
+            				</LinearGradientBrush>
+            			</Rectangle.Fill>
+            		</Rectangle>
+            	</Grid>
+        		<Grid VerticalAlignment="Center" Margin="25,90,20,10">
+        			<Grid.RowDefinitions>
+						<RowDefinition Height="Auto"/>
+        				<RowDefinition Height="Auto"/>
+        				<RowDefinition Height="Auto"/>
+        				<RowDefinition Height="Auto"/>
+        				<RowDefinition Height="Auto"/>
+        				<RowDefinition Height="10"/>
+        			</Grid.RowDefinitions>
+        			<Grid.ColumnDefinitions>
+        				<ColumnDefinition Width="180"/>
+        				<ColumnDefinition />
+        			</Grid.ColumnDefinitions>
+
+					<TextBlock x:Name="ServerUrlLabel" TextWrapping="Wrap" Grid.Row="0" Text="SharePoint Server" VerticalAlignment="Center" Margin="0" FontSize="14.667" FontFamily="Segoe UI Semilight" Foreground="Black"/>
+        			<TextBox x:Name="UrlBox" Grid.Row="0" Text="{Binding ServerUrl, Mode=TwoWay}" Height="30" MinWidth="250" Grid.Column="1" IsEnabled="{Binding IsLoading, Converter={StaticResource BooleanNegationConverter}}" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Margin="10,10,5,10" FontFamily="Segoe UI Semilight" Background="{x:Null}" Foreground="Black" BorderBrush="#FF5C5C5C"/>
+
+        			<TextBlock x:Name="UsernameLabel" TextWrapping="Wrap" Grid.Row="1" Text="Benutzername" VerticalAlignment="Center" Margin="0" FontSize="14.667" FontFamily="Segoe UI Semilight" Foreground="Black"/>
+        			<TextBox x:Name="UsernameBox" Grid.Row="1" Text="{Binding Username, Mode=TwoWay}" Height="30" MinWidth="250" Grid.Column="1" IsEnabled="{Binding IsLoading, Converter={StaticResource BooleanNegationConverter}}" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Margin="10,10,5,10" FontFamily="Segoe UI Semilight" Background="{x:Null}" Foreground="Black" BorderBrush="#FF5C5C5C"/>
+
+        			<TextBlock x:Name="PasswordLabel" TextWrapping="Wrap" Text="Passwort" VerticalAlignment="Center" Grid.Row="2" Margin="0" FontSize="14.667" FontFamily="Segoe UI Semilight" Foreground="Black"/>
+        			<PasswordBox x:Name="PasswordBox" Height="30" Password="{Binding Userpassword, Mode=TwoWay}" IsEnabled="{Binding IsLoading, Converter={StaticResource BooleanNegationConverter}}" IsPasswordRevealButtonEnabled="True" Grid.Column="1" Grid.Row="2" Margin="10,10,5,10" FontFamily="Segoe UI Semilight" KeyDown="PasswordBox_KeyDown" Background="{x:Null}" Foreground="Black" BorderBrush="#FF5C5C5C"/>
+        			<CheckBox x:Name="SaveCredentials" IsChecked="{Binding SaveUserCredentials, Mode=TwoWay}" IsEnabled="{Binding IsLoading, Converter={StaticResource BooleanNegationConverter}}" Grid.Row="3" Grid.Column="1" Padding="0" Margin="8,10,0,10" FontFamily="Segoe UI Semilight" Background="{x:Null}" Content=" Anmeldedaten speichern" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" ScrollViewer.VerticalScrollBarVisibility="Disabled" Foreground="Black" BorderBrush="Black"/>
+
+        			<Button x:Name="Login" Content="Anmelden" Command="{Binding LoginCommand}" Grid.Row="4" Grid.Column="1" HorizontalAlignment="Right" Width="120" Margin="5,5,0,5" FontFamily="Segoe UI Semilight"  Foreground="Black" Background="#FFDC861E" BorderBrush="Black"/>
+
+        			<TextBlock x:Name="ErrorMsg" TextWrapping="Wrap" 
+        				VerticalAlignment="Bottom" Grid.Row="4" Grid.ColumnSpan="2" Margin="0,0,120,8" FontFamily="Segoe UI Semilight" FontSize="14.667" Text="{Binding Message}"/>
+        			<ProgressBar Height="10" VerticalAlignment="Bottom" Grid.Row="5" Grid.ColumnSpan="2" IsIndeterminate="True" Margin="0" Visibility="{Binding IsLoading, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+        		</Grid>
+        	</Grid>
+        </Border>
+    </Grid>
+</Page>
